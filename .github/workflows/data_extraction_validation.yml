@@ -1,8 +1,8 @@
 name: Extract and validate DGS data (from downloaded PDF file)
 
-on:
-  schedule:
-    - cron: 0 12 * * *
+on: push
+  #schedule:
+   # - cron: 0 12 * * *
 
 jobs:
   build:
