@@ -5,3 +5,7 @@ pytest-mock
 textract
 requests
 beautifulsoup4
+matplotlib
+seaborn
+scipy
+
