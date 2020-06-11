@@ -33,11 +33,12 @@ def plot_conc(concelhos):
     for concelho in concelhos['conc']:
         casos_wide['temp'] = gaussian_filter1d(casos_wide[concelho].diff(), sigma=3)
         #_ = plt.plot(casos_wide['Data'].tail(plot_days), casos_wide[concelho].diff().rolling(window=smoothing).mean().tail(plot_days))
-        _ = plt.plot(casos_wide['Data'].tail(plot_days), casos_wide['temp'].tail(plot_days), linewidth=5)
-        lgd = ax.legend(concelhos['conc'], prop={'size': 20}, loc='upper left', bbox_to_anchor=(1, 1))
+        _ = plt.plot(casos_wide['Data'].tail(plot_days), casos_wide['temp'].tail(plot_days), linewidth=3)
+        lgd = ax.legend(concelhos['conc'], prop={'size': 20}, loc='upper left', bbox_to_anchor=(1, 1), frameon=False)
         plt.xticks(plticks)
-        sns.despine(right=True, top=True)
-        fig.autofmt_xdate()
+        ax.tick_params(axis="both", which="both", bottom=False, top=False, left=False, right=False)
+        ax.yaxis.grid(linestyle='--',color='silver')
+        sns.despine(right=True, top=True, bottom=True, left=True)        fig.autofmt_xdate()
     PATH_TO_GRAPH = str(Path(__file__).resolve().parents[2]) + '/docs/' + concelhos['name']
     fig.savefig(PATH_TO_GRAPH, bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.show()
