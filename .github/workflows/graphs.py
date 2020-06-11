@@ -30,6 +30,7 @@ def plot_conc(concelhos):
         lgd = ax.legend(concelhos['conc'], prop={'size': 20}, bbox_to_anchor=(1, 1))
         plt.xticks(plticks)
         fig.autofmt_xdate()
+    #PATH_TO_GRAPH = str(Path(__file__).resolve().parents[2] / 'data.csv')
     fig.savefig(concelhos['name'], bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.show()
 
