@@ -1,9 +1,6 @@
 name: Extract and validate DGS data (from downloaded PDF file)
 
-on:
-  pull_request:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
