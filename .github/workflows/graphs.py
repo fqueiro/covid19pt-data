@@ -38,7 +38,8 @@ def plot_conc(concelhos):
         plt.xticks(plticks)
         ax.tick_params(axis="both", which="both", bottom=False, top=False, left=False, right=False)
         ax.yaxis.grid(linestyle='--',color='silver')
-        sns.despine(right=True, top=True, bottom=True, left=True)        fig.autofmt_xdate()
+        sns.despine(right=True, top=True, bottom=True, left=True)
+        fig.autofmt_xdate()
     PATH_TO_GRAPH = str(Path(__file__).resolve().parents[2]) + '/docs/' + concelhos['name']
     fig.savefig(PATH_TO_GRAPH, bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.show()
