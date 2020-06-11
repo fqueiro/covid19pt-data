@@ -1,9 +1,8 @@
 name: Extract and validate DGS data (from downloaded PDF file)
 
-on: push
-#on:
- # schedule:
-  #  - cron: 0 12 * * *
+on:
+  schedule:
+    - cron: 0 12 * * *
 
 jobs:
   build:
@@ -28,9 +27,6 @@ jobs:
       - name: Extract municipality data from arcgis
         run: | 
           python .github/workflows/extract_dados_concelhos.py
-      - name: Plot graphs
-        run: | 
-          python .github/workflows/graphs.py
       - name: Commit all changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
