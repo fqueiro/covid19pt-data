@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    if: startsWith(github.head_ref, 'dados')
+    #if: startsWith(github.head_ref, 'dados')
     runs-on: ubuntu-latest
     container: python:3
 
