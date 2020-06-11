@@ -28,3 +28,8 @@ jobs:
       - name: Plot graphs
         run: | 
           python .github/workflows/graphs.py
+      - name: Commit all changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update data for today 
+          #branch: ${{ github.head_ref }}
