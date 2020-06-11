@@ -34,7 +34,7 @@ def plot_conc(concelhos):
         lgd = ax.legend(concelhos['conc'], prop={'size': 20}, bbox_to_anchor=(1, 1))
         plt.xticks(plticks)
         fig.autofmt_xdate()
-    PATH_TO_GRAPH = str(Path(__file__).resolve().parents[2]) + '/docs/' + docsconcelhos['name']
+    PATH_TO_GRAPH = str(Path(__file__).resolve().parents[2]) + '/docs/' + concelhos['name']
     fig.savefig(PATH_TO_GRAPH, bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.show()
 
