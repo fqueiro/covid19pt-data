@@ -4,6 +4,7 @@ import datetime
 import numpy as np
 from pathlib import Path
 
+pd.options.mode.chained_assignment = None  # default='warn'
 
 def get_list_municipalities():
     resultOffset = 0
@@ -44,7 +45,7 @@ def get_list_cases_long():
 
         for entry in data['features']:
             unix_date = entry['attributes']['Data']/1000
-            frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m-%Y")
+            frmt_date = datetime.datetime.utcfromtimestamp(unix_date).strftime("%d-%m")
             confirmados_acumulado = entry['attributes']['ConfirmadosAcumulado']
             confirmados_concelho = entry['attributes']['Concelho']
             casos.append([frmt_date, confirmados_concelho, confirmados_acumulado])
@@ -63,7 +64,7 @@ def get_list_cases_long():
 
 def patch_concelhos(concelhos):
     
-    fix1 = concelhos.data=='16-05-2020'
+    fix1 = concelhos.data=='16-05'
     concelhos.loc[fix1, 'SANTO TIRSO'] = 378
     concelhos.loc[fix1, 'SÃO BRÁS DE ALPORTEL'] = 3
 
@@ -72,6 +73,7 @@ def patch_concelhos(concelhos):
 if __name__ == '__main__':
 
     PATH_TO_CSV = str(Path(__file__).resolve().parents[2] / 'data_concelhos.csv')
+    #PATH_TO_CSV = 'data_concelhos.csv'
 
     # Get list of municipalities
     concelhos_df = get_list_municipalities()
@@ -82,16 +84,16 @@ if __name__ == '__main__':
     # Merge list of cases with list of municipalities
     casos_df = concelhos_df.merge(casos_df, how='left', on='concelho')
     casos_df.confirmados[casos_df.data.isna()] = -1 # Helper for pivot table
-    casos_df.data[casos_df.data.isna()] = '24-03-2020' # Helper for pivot table
+    casos_df.data[casos_df.data.isna()] = '24-03' # Helper for pivot table
     casos_df = casos_df.sort_values(by=['concelho'])
 
     # Convert long table to wide table
     casos_wide = pd.pivot_table(casos_df, values='confirmados', index='data', columns = 'concelho').reset_index()
-    casos_wide.data = pd.to_datetime(casos_wide.data, format='%d-%m-%Y')
+    casos_wide.data = pd.to_datetime(casos_wide.data, format='%d-%m')
     casos_wide = casos_wide.sort_values(by='data').reset_index(drop=True)
     casos_wide = casos_wide.replace(-1, np.nan)
     
-    casos_wide.data = casos_wide['data'].dt.strftime('%d-%m-%Y')
+    casos_wide.data = casos_wide['data'].dt.strftime('%d-%m')
     
     casos_wide = patch_concelhos(casos_wide)
 
