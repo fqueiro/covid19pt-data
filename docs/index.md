@@ -6,6 +6,6 @@ Evolução de casos na Área Metropolitana do Porto
 
 ![AMP](../AMP.png)
 
-Evolução de casos nos concelhos à volta da Curia
+Evolução de casos na Área Metropolitana da Curia
 
 ![Curia](../Curia.png)
