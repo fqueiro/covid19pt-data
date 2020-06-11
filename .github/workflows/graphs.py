@@ -33,9 +33,10 @@ def plot_conc(concelhos):
     for concelho in concelhos['conc']:
         casos_wide['temp'] = gaussian_filter1d(casos_wide[concelho].diff(), sigma=3)
         #_ = plt.plot(casos_wide['Data'].tail(plot_days), casos_wide[concelho].diff().rolling(window=smoothing).mean().tail(plot_days))
-        _ = plt.plot(casos_wide['Data'].tail(plot_days), casos_wide['temp'].tail(plot_days))
+        _ = plt.plot(casos_wide['Data'].tail(plot_days), casos_wide['temp'].tail(plot_days), linewidth=5)
         lgd = ax.legend(concelhos['conc'], prop={'size': 20}, loc='upper left', bbox_to_anchor=(1, 1))
         plt.xticks(plticks)
+        sns.despine(right=True, top=True)
         fig.autofmt_xdate()
     PATH_TO_GRAPH = str(Path(__file__).resolve().parents[2]) + '/docs/' + concelhos['name']
     fig.savefig(PATH_TO_GRAPH, bbox_extra_artists=(lgd,), bbox_inches='tight')
