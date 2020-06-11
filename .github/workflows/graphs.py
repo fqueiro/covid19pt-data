@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.ndimage.filters import gaussian_filter1d
 
-casos_wide = pd.read_csv('data_concelhos.csv')
+casos_wide = pd.read_csv(str(Path(__file__).resolve().parents[2] / 'data_concelhos.csv'))
 
 casos_wide.columns = map(str.title, casos_wide.columns)
 plot_days = 1000
