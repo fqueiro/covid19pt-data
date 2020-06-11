@@ -1,15 +1,15 @@
-Evolução de casos nas principais Áreas Metropolitanas do país
+Novos casos nas principais Áreas Metropolitanas do país
 
 ![Portugal](Portugal.png)
 
-Evolução de casos na Área Metropolitana de Lisboa
+Novos casos na Área Metropolitana de Lisboa
 
 ![AML](AML.png)
 
-Evolução de casos na Área Metropolitana do Porto
+Novos casos na Área Metropolitana do Porto
 
 ![AMP](AMP.png)
 
-Evolução de casos na Área Metropolitana de Tamengos
+Novos casos na Área Metropolitana de Tamengos
 
 ![Curia](Curia.png)
